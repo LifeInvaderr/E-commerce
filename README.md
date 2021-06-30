@@ -7,6 +7,10 @@ E-commerce is a backend web-api with the needed routes to set up a retail websit
 ![Insomnia Example](images/Insomia-Tag.PNG)
 
 ## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Tests](#tests)
+* [Questions](#questions)
 
 ## Installation
 To install this repository, please clone or download the zip version from GitHub.
