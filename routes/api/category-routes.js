@@ -9,6 +9,10 @@ router.get('/', (req, res) => {
     include: [Product]
   })
     .then(categoryData => res.json(categoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
   // be sure to include its associated Products
 });
 
@@ -20,7 +24,17 @@ router.get('/:id', (req, res) => {
     },
     include: [Product]
   })
-    .then(categoryData => res.json(categoryData))
+    .then(categoryData => {
+      if (!categoryData) {
+        res.status(404).json({ message: 'No category found with this id' })
+        return;
+      }
+      res.json(categoryData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
   // be sure to include its associated Products
 });
 
@@ -29,6 +43,11 @@ router.post('/', (req, res) => {
   Category.create({
     category_name: req.body.category_name
   })
+    .then(categoryData => res.json(categoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.put('/:id', (req, res) => {
