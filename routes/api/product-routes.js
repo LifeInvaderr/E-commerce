@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
     include: [Category, Tag]
   })
     .then(productData => res.json(productData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
   // be sure to include its associated Category and Tag data
 });
 
@@ -22,7 +26,17 @@ router.get('/:id', (req, res) => {
     },
     include: [Category, Tag]
   })
-    .then(productData => res.json(productData))
+    .then(productData => {
+      if (productData) {
+        res.status(404).json({ message: 'No product found with this id' })
+        return;
+      }
+      res.json(productData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
   // be sure to include its associated Category and Tag data
 });
 

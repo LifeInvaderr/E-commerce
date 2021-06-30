@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { removeTicks } = require('sequelize/types/lib/utils');
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
@@ -9,6 +10,10 @@ router.get('/', (req, res) => {
     include: [Product]
   })
     .then(tagData => res.json(tagData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
   // be sure to include its associated Product data
 });
 
@@ -20,7 +25,17 @@ router.get('/:id', (req, res) => {
     },
     include: [Product]
   })
-    .then(tagData => res.json(tagData))
+    .then(tagData => {
+      if (!tagData) {
+        res.status(404).json({ message: 'No tag found with this id' })
+        return;
+      }
+      res.json(tagData)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    });
   // be sure to include its associated Product data
 });
 
