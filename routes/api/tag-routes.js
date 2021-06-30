@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { removeTicks } = require('sequelize/types/lib/utils');
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
