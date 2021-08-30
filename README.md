@@ -1,6 +1,4 @@
 # E-commerce
-URL to this repository
-
 ## Description
 E-commerce is a backend web-api with the needed routes to set up a retail website.
 
