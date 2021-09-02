@@ -1,8 +1,9 @@
 # E-commerce
-## Description
-E-commerce is a backend web-api with the needed routes to set up a retail website.
 
 ![Insomnia Example](images/Insomia-Tag.PNG)
+
+## Description
+E-commerce is a backend web-api with the needed routes to set up a retail website.
 
 ## Table of Contents
 * [Technologies](#technologies)
